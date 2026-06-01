@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RH Studio · Paula Dayraut · Recursos Humanos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --lila:#B8A9D9;--lila-light:#EDE8F5;--lila-mid:#7C6FA0;--lila-dark:#7C6FA0;
+  --lila2:#D4C8EC;--lila2-light:#F0EBF9;
+  --rose:#C4A882;--rose-light:#F3EFE8;--rose-mid:#C4A882;--rose-dark:#8A6E4A;
+  --lilac3:#C8BEE0;--lilac3-light:#EDE8F5;--lilac3-mid:#7C6FA0;--lilac3-dark:#2E2E4A;
+  --gray:#F3F1F8;--white:#F8F5FF;--charcoal:#1A1A2E;--stone:#7C6FA0;--gray-text:#7A7A74;
+}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--white);color:var(--charcoal);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,245,255,0.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(124,111,160,0.15);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:"Playfair Display",serif;font-size:1.2rem;color:var(--charcoal);display:flex;align-items:center;gap:0.5rem}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--lila-dark);flex-shrink:0}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:0.875rem;color:var(--stone);transition:color 0.2s}
+.nav-links a:hover{color:var(--lila-dark)}
+.nav-cta{background:var(--lila-dark);color:#fff!important;padding:0.5rem 1.4rem;border-radius:2rem;font-weight:500!important;transition:background 0.2s!important}
+.nav-cta:hover{background:#5A5080!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--charcoal)}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:var(--white);border-bottom:1px solid rgba(124,111,160,0.15);padding:1.5rem 5%;flex-direction:column;gap:1.25rem;z-index:99}
+.mobile-menu a{font-size:1rem;color:var(--stone)}
+.mobile-menu .nav-cta{text-align:center;padding:0.75rem;border-radius:2rem}
+
+/* HERO — sin foto, centrado */
+.hero{min-height:100vh;display:flex;align-items:center;padding:0 5%;padding-top:68px;background:var(--white);position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.25}
+.b1{width:600px;height:600px;background:var(--lila);top:-20%;right:-5%}
+.b2{width:400px;height:400px;background:var(--lila2);bottom:-10%;left:-5%}
+.b3{width:350px;height:350px;background:var(--rose);bottom:5%;right:5%}
+.hero-inner{max-width:800px;margin:0 auto;width:100%;padding:6rem 0;position:relative;z-index:1;text-align:center}
+.hero-eyebrow{display:flex;align-items:center;justify-content:center;gap:0.65rem;margin-bottom:1.75rem}
+.ey-line{height:2px;width:32px;background:var(--lila-dark)}
+.ey-text{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--lila-dark)}
+.hero-hi{font-family:"Playfair Display",serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-style:italic;color:var(--stone);display:block;margin-bottom:1.25rem;font-weight:400;line-height:1.35}
+.hero-claim{font-family:"Playfair Display",serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:400;line-height:1.35;color:var(--charcoal);max-width:680px;margin:0 auto}
+.hero-claim em{color:var(--lila-dark);font-style:italic}
+.hero-desc{font-size:1.05rem;color:var(--stone);line-height:1.85;max-width:560px;margin:1.75rem auto 2.5rem;font-weight:300}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn-p{background:var(--lila-dark);color:#fff;padding:0.9rem 2.25rem;border-radius:2rem;font-size:0.9rem;font-weight:500;transition:all 0.22s;display:inline-block;box-shadow:0 6px 24px rgba(124,111,160,0.28)}
+.btn-p:hover{background:#5A5080;transform:translateY(-2px)}
+.btn-s{background:transparent;color:var(--rose-dark);padding:0.9rem 2.25rem;border-radius:2rem;font-size:0.9rem;font-weight:500;border:1.5px solid var(--rose-mid);transition:all 0.22s;display:inline-block}
+.btn-s:hover{background:var(--rose-light);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:3.5rem;margin-top:3.5rem;justify-content:center}
+.stat{display:flex;flex-direction:column;align-items:center}
+.stat-n{font-family:"Playfair Display",serif;font-size:2.1rem;font-weight:500;color:var(--charcoal);line-height:1}
+.stat-l{font-size:0.73rem;color:var(--stone);margin-top:6px;font-weight:300}
+.hero-divider{width:1px;height:40px;background:var(--lila);opacity:0.4;align-self:center}
+
+section{padding:5.5rem 5%}
+.si{max-width:1200px;margin:0 auto}
+.stag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;padding:0.32rem 1rem;border-radius:2rem;margin-bottom:1rem}
+.t-lila{background:var(--lila-light);color:var(--lila-dark)}
+.t-lila2{background:var(--lilac3-light);color:var(--lilac3-dark)}
+.t-rose{background:var(--rose-light);color:var(--rose-dark)}
+.stitle{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,3vw,2.65rem);font-weight:400;line-height:1.2;margin-bottom:1rem}
+.ssub{font-size:1rem;color:var(--stone);line-height:1.82;font-weight:300}
+
+/* SOBRE — sin foto */
+.sobre{background:var(--gray)}
+.sobre-centered{max-width:760px;margin:0 auto;text-align:center}
+.sobre-centered .ssub{max-width:100%;margin-bottom:1rem}
+.sobre-centered .stitle{font-size:clamp(1.8rem,3vw,2.4rem)}
+.creds{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.75rem;justify-content:center}
+.cred{display:flex;align-items:center;gap:0.45rem;border-radius:2rem;padding:0.45rem 1rem;font-size:0.8rem}
+.c-lila{background:var(--lila-light);color:var(--lila-dark)}
+.c-lila2{background:var(--lilac3-light);color:var(--lilac3-dark)}
+.c-rose{background:var(--rose-light);color:var(--rose-dark)}
+.cdot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.c-lila .cdot{background:var(--lila-dark)}
+.c-lila2 .cdot{background:var(--lilac3-dark)}
+.c-rose .cdot{background:var(--rose-dark)}
+
+/* SERVICIOS */
+.servicios{background:var(--white)}
+.sh{text-align:center;margin-bottom:3.5rem}
+.sh .ssub{max-width:520px;margin:0 auto}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.sc{border-radius:22px;padding:2rem 1.75rem;border:1.5px solid transparent;transition:all 0.26s;position:relative;overflow:hidden}
+.sc::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0 0 20px 20px;opacity:0;transition:opacity 0.26s}
+.sc-l{background:var(--lila-light);border-color:rgba(168,141,212,0.4)}
+.sc-l::after{background:var(--lila-dark)}
+.sc-l2{background:var(--lilac3-light);border-color:rgba(138,170,212,0.4)}
+.sc-l2::after{background:var(--lilac3-dark)}
+.sc-r{background:var(--rose-light);border-color:rgba(224,150,176,0.4)}
+.sc-r::after{background:var(--rose-dark)}
+.sc:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,0.08)}
+.sc:hover::after{opacity:1}
+.sico{font-size:1.75rem;margin-bottom:1.2rem;display:block}
+.sc h3{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:500;margin-bottom:0.65rem}
+.sc p{font-size:0.875rem;color:var(--stone);line-height:1.75;font-weight:300}
+.slink{display:inline-flex;align-items:center;gap:0.3rem;margin-top:1rem;font-size:0.8rem;font-weight:500;transition:gap 0.2s}
+.sc-l .slink{color:var(--lila-dark)}
+.sc-l2 .slink{color:var(--lilac3-dark)}
+.sc-r .slink{color:var(--rose-dark)}
+.slink::after{content:"→"}
+.sc:hover .slink{gap:0.55rem}
+
+/* TRACKS */
+.tracks{background:linear-gradient(130deg,var(--lila-light) 0%,var(--lila2-light) 50%,var(--rose-light) 100%)}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
+.tc{border-radius:26px;padding:2.75rem;position:relative;overflow:hidden}
+.tc-pers{background:linear-gradient(145deg,#EDE8F5 0%,#D4C8EC 100%)}
+.tc-emp{background:linear-gradient(145deg,#2E2E4A 0%,#1A1A2E 100%);color:#fff}
+.tc h3{font-family:"Playfair Display",serif;font-size:1.7rem;font-weight:400;margin-bottom:0.75rem}
+.tc p{font-size:0.9rem;line-height:1.8;font-weight:300;margin-bottom:1.75rem;opacity:0.85}
+.tc ul{list-style:none;display:flex;flex-direction:column;gap:0.65rem;margin-bottom:2rem}
+.tc ul li{font-size:0.875rem;display:flex;align-items:center;gap:0.7rem;font-weight:300}
+.tc-pers ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lila-dark);flex-shrink:0}
+.tc-emp ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lila-mid);flex-shrink:0}
+.btnt{display:inline-block;padding:0.85rem 1.9rem;border-radius:2rem;font-size:0.875rem;font-weight:500;transition:all 0.2s}
+.tc-pers .btnt{background:#fff;color:var(--lila-dark)}
+.tc-pers .btnt:hover{background:var(--lila2-light)}
+.tc-emp .btnt{background:var(--lila-mid);color:#fff}
+.tc-emp .btnt:hover{background:var(--lila)}
+.tc-deco{position:absolute;bottom:-3rem;right:-3rem;width:160px;height:160px;border-radius:50%;opacity:0.12}
+.tc-pers .tc-deco{background:var(--lila-dark)}
+.tc-emp .tc-deco{background:var(--lila)}
+
+/* PROCESO */
+.proceso{background:var(--gray)}
+.ph{text-align:center;margin-bottom:3.5rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative}
+.sline{position:absolute;top:2rem;left:calc(12.5%);right:calc(12.5%);height:1px;background:linear-gradient(90deg,var(--lila-mid),var(--lila2),var(--rose-mid));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.snum{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:"Playfair Display",serif;font-size:1.2rem;font-weight:500}
+.sn1{background:var(--lila-light);border:2px solid var(--lila-mid);color:var(--lila-dark)}
+.sn2{background:var(--lilac3-light);border:2px solid var(--lilac3-mid);color:var(--lilac3-dark)}
+.sn3{background:var(--rose-light);border:2px solid var(--rose-mid);color:var(--rose-dark)}
+.sn4{background:var(--lila-light);border:2px solid var(--lila-mid);color:var(--lila-dark)}
+.step h4{font-size:0.95rem;font-weight:500;margin-bottom:0.5rem}
+.step p{font-size:0.82rem;color:var(--stone);line-height:1.7;font-weight:300;padding:0 0.5rem}
+
+/* TESTIMONIOS CARRUSEL */
+.testimonios{background:var(--white);padding:3.5rem 5%}
+.tsthead{text-align:center;margin-bottom:2rem}
+.carousel-wrap{position:relative;max-width:580px;margin:0 auto;padding:0 0.5rem}
+.carousel-track{display:flex;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);will-change:transform;padding:0.75rem 0.25rem}
+.tcard{min-width:100%;border-radius:18px;padding:1.5rem 1.75rem;border:1.5px solid transparent;box-sizing:border-box}
+.tlila{background:var(--lila-light);border-color:rgba(168,141,212,0.35)}
+.tlila2{background:var(--lilac3-light);border-color:rgba(138,170,212,0.35)}
+.trose{background:var(--rose-light);border-color:rgba(224,150,176,0.35)}
+.tstars{font-size:0.82rem;letter-spacing:2px;margin-bottom:0.75rem}
+.tlila .tstars{color:var(--lila-dark)}
+.tlila2 .tstars{color:var(--lilac3-dark)}
+.trose .tstars{color:var(--rose-dark)}
+.tcard blockquote{font-family:"Playfair Display",serif;font-style:italic;font-size:0.88rem;color:var(--charcoal);line-height:1.72;margin-bottom:1rem}
+.tmeta{display:flex;align-items:center;gap:0.75rem}
+.tav{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:500;color:#fff;flex-shrink:0}
+.avl{background:linear-gradient(135deg,var(--lila-mid),var(--lila-dark))}
+.avl2{background:linear-gradient(135deg,var(--lilac3-mid),var(--lilac3-dark))}
+.avr{background:linear-gradient(135deg,var(--rose-mid),var(--rose-dark))}
+.tname{font-size:0.85rem;font-weight:500}
+.trole{font-size:0.73rem;color:var(--stone)}
+.carousel-nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.5rem}
+.cnav-btn{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--lila-mid);background:#fff;color:var(--lila-dark);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all 0.2s;flex-shrink:0}
+.cnav-btn:hover{background:var(--lila-light);border-color:var(--lila-dark)}
+.cdots{display:flex;gap:0.45rem;align-items:center}
+.cdot{width:7px;height:7px;border-radius:50%;background:var(--lila);transition:all 0.3s;cursor:pointer}
+.cdot.active{background:var(--lila-dark);width:20px;border-radius:4px}
+
+/* CONTACTO */
+.contacto{background:linear-gradient(145deg,#1A1A2E 0%,#2E2E4A 60%,#1A1A2E 100%);padding:5.5rem 5%}
+.cin{display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:start;max-width:1100px;margin:0 auto}
+.contacto .stitle{color:#fff}
+.contacto .ssub{color:rgba(255,255,255,0.58)}
+.cinfo{margin-top:2rem;display:flex;flex-direction:column;gap:0.85rem}
+.ciitem{display:flex;align-items:center;gap:0.85rem;font-size:0.875rem;color:rgba(255,255,255,0.8)}
+.ciitem a{color:rgba(255,255,255,0.8);transition:color 0.2s}
+.ciitem a:hover{color:#fff}
+.ciico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0}
+.i-l{background:rgba(124,111,160,0.12)}
+.i-l2{background:rgba(46,46,74,0.12)}
+.i-li{background:rgba(124,111,160,0.2)}
+.cloc{margin-top:1.25rem;font-size:0.78rem;color:rgba(255,255,255,0.38);display:flex;align-items:center;gap:0.4rem}
+.srow{display:flex;gap:0.65rem;margin-top:1.75rem}
+.sbtn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:500;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.55);transition:all 0.2s;cursor:pointer;background:rgba(255,255,255,0.05)}
+.sbtn:hover{background:rgba(255,255,255,0.12);color:#fff;border-color:rgba(255,255,255,0.4)}
+.fw{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:1.5rem 1.75rem;backdrop-filter:blur(12px);width:100%}
+.fg{margin-bottom:1rem}
+.fg label{display:block;font-size:0.73rem;color:rgba(255,255,255,0.45);margin-bottom:0.35rem;font-weight:400;letter-spacing:0.04em;text-transform:uppercase}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.65rem 0.9rem;color:#fff;font-family:"DM Sans",sans-serif;font-size:0.85rem;outline:none;transition:border 0.2s;font-weight:300}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--lila-mid)}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,0.25)}
+.fg select option{background:#1A1A2E;color:#fff}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.fsub{width:100%;background:linear-gradient(90deg,var(--lila-mid),#2E2E4A);color:#fff;border:none;padding:0.8rem;border-radius:2rem;font-size:0.875rem;font-weight:500;cursor:pointer;transition:all 0.2s;font-family:"DM Sans",sans-serif;margin-top:0.25rem}
+.fsub:hover{opacity:0.88;transform:translateY(-2px);box-shadow:0 8px 24px rgba(168,141,212,0.35)}
+
+.wa-btn{display:inline-flex;align-items:center;gap:0.75rem;margin-top:1.5rem;background:#fff;color:#2a7a4f;padding:0.85rem 1.75rem;border-radius:2rem;font-size:0.875rem;font-weight:500;transition:all 0.22s;border:1.5px solid rgba(37,211,102,0.45);box-shadow:0 4px 16px rgba(37,211,102,0.12)}
+.wa-btn:hover{background:#f0fdf6;border-color:rgba(37,211,102,0.7);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.18)}
+.wa-btn svg{flex-shrink:0;color:#25D366}
+footer{background:#1A1A2E;padding:2rem 5%;color:rgba(255,255,255,0.5)}
+.fi{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.flogo{font-family:"Playfair Display",serif;font-size:1.1rem;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:0.4rem}
+.flinks{display:flex;gap:1.75rem;flex-wrap:wrap}
+.flinks a{font-size:0.8rem;color:rgba(255,255,255,0.55);transition:color 0.2s}
+.flinks a:hover{color:rgba(255,255,255,0.65)}
+
+@media(max-width:960px){
+  .hero-stats{gap:2rem}
+  .sgrid{grid-template-columns:1fr 1fr}
+  .tgrid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .sline{display:none}
+  .tgr{grid-template-columns:1fr 1fr}
+  .cin{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+}
+@media(max-width:600px){
+  .sgrid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .tgr{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column;gap:1.5rem;align-items:center}
+  .hero-divider{display:none}
+  .fi{flex-direction:column;text-align:center}
+  section{padding:4rem 5%}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo"><span class="logo-dot"></span>RH Studio</div>
+    <div class="nav-links">
+      <a href="#sobre">Sobre RH Studio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#para-quien">¿Para quién?</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto" class="nav-cta">Hablemos</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="toggleMenu()">Sobre RH Studio</a>
+  <a href="#servicios" onclick="toggleMenu()">Servicios</a>
+  <a href="#para-quien" onclick="toggleMenu()">¿Para quién?</a>
+  <a href="#proceso" onclick="toggleMenu()">Proceso</a>
+  <a href="#contacto" class="nav-cta" onclick="toggleMenu()">Hablemos</a>
+</div>
+
+<!-- HERO — centrado, sin foto -->
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="ey-line"></div>
+      <span class="ey-text">Consultora de Recursos Humanos</span>
+      <div class="ey-line"></div>
+    </div>
+    <span class="hero-hi">Hola, bienvenido a RH Studio</span>
+    <p class="hero-claim">Donde acompañamos a personas a <em>potenciar su valor</em> y a organizaciones a <em>transformar equipos</em></p>
+    <p class="hero-desc" style="color:var(--gray-text)">Trabajamos en encontrar el mejor talento, la construcción de culturas de trabajo positivas, y el diseño de procesos de gestión de recursos humanos sólidos y efectivos.</p>
+    <div class="hero-btns">
+      <a href="#servicios" class="btn-p">Ver servicios</a>
+      <a href="#contacto" class="btn-s">Consulta gratuita</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-n">+40</span><span class="stat-l">CV diseñados</span></div>
+      <div class="hero-divider"></div>
+      <div class="stat"><span class="stat-n">100%</span><span class="stat-l">Clientes satisfechos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE — sin foto, sin cita -->
+<section class="sobre" id="sobre">
+  <div class="si">
+    <div class="sobre-centered">
+      <span class="stag t-lila">Acerca de RH Studio</span>
+      <h2 class="stitle" style="font-size:clamp(1rem,1.8vw,1.4rem);font-weight:400;font-style:italic;color:var(--gray-text);">En <span style="color:var(--lila-mid)">RH Studio</span> creemos en un equilibrio real entre los resultados y las personas, donde el desarrollo del talento y la mejora continua son pilares fundamentales para construir organizaciones y equipos sólidos, colaborativos y comprometidos</h2>
+      <p class="ssub">Impulsamos iniciativas vinculadas al talento, la empleabilidad, el desarrollo profesional y el fortalecimiento de equipos, desde una mirada cercana, clara y orientada a resultados.</p>
+      <div class="creds">
+        <div class="cred c-lila"><span class="cdot"></span>Armado de CV</div>
+        <div class="cred c-lila2"><span class="cdot"></span>Asesoramiento laboral</div>
+        <div class="cred c-rose"><span class="cdot"></span>Atracción de talento</div>
+        <div class="cred c-lila"><span class="cdot"></span>Onboarding</div>
+        <div class="cred c-lila2"><span class="cdot"></span>Formación</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="si">
+    <div class="sh">
+      <span class="stag t-lila2">TE OFRECEMOS</span>
+      <h2 class="stitle">Acompañamiento en cada etapa</h2>
+      <p class="ssub">Desde el desarrollo del perfil profesional individual hasta el fortalecimiento de equipos y organizaciones. Brindamos soluciones en gestión de personas adaptadas a cada necesidad y momento de crecimiento.</p>
+    </div>
+    <div class="sgrid">
+      <div class="sc sc-l"><span class="sico">📄</span><h3>Armado de CV</h3><p>Diseño y optimización de currículum y carta de presentación pensados para potenciar tu perfil, comunicar tu valor y mejorar tu posicionamiento profesional.</p><a href="#contacto" class="slink">Consultar</a></div>
+      <div class="sc sc-l2"><span class="sico">💼</span><h3>Asesoramiento laboral</h3><p>Acompañamiento para quienes buscan su primera experiencia laboral, atraviesan un cambio profesional o están en búsqueda activa. Trabajamos en entrevistas, comunicación de la experiencia, identificación de fortalezas y estrategias para procesos de selección.</p><a href="#contacto" class="slink">Consultar</a></div>
+      <div class="sc sc-r"><span class="sico">🎯</span><h3>Atracción de talento</h3><p>Acompañamos a organizaciones en la búsqueda e identificación de perfiles alineados a sus necesidades, cultura y objetivos. Diseñamos procesos de atracción y selección enfocados en encontrar el talento adecuado para cada equipo.</p><a href="#contacto" class="slink">Consultar</a></div>
+      <div class="sc sc-l2"><span class="sico">🚀</span><h3>Onboarding</h3><p>Diseño e implementación de programas de incorporación que aceleran la integración cultural y la productividad.</p><a href="#contacto" class="slink">Consultar</a></div>
+      <div class="sc sc-l"><span class="sico">📚</span><h3>Formación</h3><p>Diseñamos programas de aprendizaje pensados para potenciar el talento, fortalecer equipos y acompañar el desarrollo de personas y organizaciones.</p><a href="#contacto" class="slink">Consultar</a></div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- TRACKS -->
+<section class="tracks" id="para-quien">
+  <div class="si">
+    <span class="stag t-lila" style="font-size:0.9rem;padding:0.45rem 1.25rem;letter-spacing:0.06em">PROPUESTA</span>
+      <h2 class="stitle">En <span style="color:var(--lila-mid)">RH Studio</span> trabajamos con personas y organizaciones</h2>
+    <div class="tgrid">
+      <div class="tc tc-pers">
+        <div class="tc-deco"></div>
+        <h3>Para personas</h3>
+        <p>Si estás buscando tu primera experiencia profesional, atravesando un cambio laboral o necesitás acompañamiento en tu búsqueda, te ayudamos a transitar el proceso con mayor claridad, estrategia y confianza.</p>
+        <ul>
+          <li>Creación y optimización de CV profesional</li>
+          <li>Carta de presentación</li>
+          <li>Preparación para entrevistas laborales</li>
+          <li>Estrategias de búsqueda laboral</li>
+          <li>Fortalecimiento del perfil profesional en portales de empleo</li>
+        </ul>
+        <a href="#contacto" class="btnt">Quiero asesorarme</a>
+      </div>
+      <div class="tc tc-emp">
+        <div class="tc-deco"></div>
+        <h3>Para organizaciones</h3>
+        <p>Si tu organización está creciendo, necesitás fortalecer procesos o desarrollar a tu equipo, trabajamos como socios estratégicos para construir una gestión de personas más clara, humana y efectiva.</p>
+        <ul>
+          <li>Atracción de talento</li>
+          <li>Programas de onboarding</li>
+          <li>Diseño de programas de formación por niveles</li>
+        </ul>
+        <a href="#contacto" class="btnt">Solicitar propuesta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+  <div class="si">
+    <div class="ph">
+      <span class="stag t-lila2">Cómo trabajamos</span>
+      <h2 class="stitle" style="font-size:clamp(1.2rem,2vw,1.6rem)">Procesos claros y metodologías adaptadas a cada necesidad</h2>
+    </div>
+    <div class="steps">
+      <div class="sline"></div>
+      <div class="step"><div class="snum sn1">01</div><h4>Diagnóstico inicial</h4><p>Entendemos tu situación, objetivos y necesidades específicas de tu perfil u organización.</p></div>
+      <div class="step"><div class="snum sn2">02</div><h4>Propuesta a medida</h4><p>Diseñamos un plan de trabajo a medida, con etapas, tiempos y objetivos claros y resultados esperados.</p></div>
+      <div class="step"><div class="snum sn3">03</div><h4>Ejecución</h4><p>Trabajamos juntos en la ejecución, con seguimiento cercano y ajustes según las necesidades del proceso.</p></div>
+      <div class="step"><div class="snum sn4">04</div><h4>Evolución y resultados</h4><p>Acompañamos el crecimiento, evaluamos avances y construimos soluciones sostenibles en el tiempo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="cin">
+    <div>
+      <span class="stag" style="background:rgba(124,111,160,0.12);color:var(--lila)">Contacto</span>
+      <h2 class="stitle">¿Listos para dar el próximo paso?</h2>
+      <p class="ssub">Completá el formulario y conversemos sobre tus objetivos. Nos ponemos en contacto para coordinar una primera reunión, donde podamos conocer tus necesidades y definir la mejor forma de acompañarte.</p>
+      <div class="cinfo">
+        <div class="ciitem"><div class="ciico i-l">✉️</div>rhstudioconsultora@gmail.com</div>
+        <div class="ciitem"><div class="ciico i-l2">📞</div>+54 9 2325 65-7883</div>
+        <div class="ciitem">
+          <div class="ciico i-li">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <a href="https://linkedin.com/in/pauladayraut" target="_blank">linkedin.com/in/pauladayraut</a>
+        </div>
+      </div>
+      <p class="cloc">📍 Argentina</p>
+      <div class="srow">
+        <div class="sbtn">in</div>
+        <div class="sbtn">ig</div>
+        <div class="sbtn">wa</div>
+      </div>
+      <a href="https://wa.me/5492325657883?text=Hola%20Paula%2C%20te%20contacto%20desde%20tu%20web.%20Me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20tus%20servicios%20de%20RRHH%20y%20ver%20c%C3%B3mo%20pod%C3%A9s%20ayudarme.%20%C2%BFPodr%C3%ADamos%20coordinar%20una%20consulta%3F" target="_blank" class="wa-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.524 5.855L.057 23.882a.5.5 0 0 0 .611.611l6.101-1.488A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.369l-.36-.214-3.722.907.935-3.624-.235-.373A9.818 9.818 0 1 1 12 21.818z"/></svg>
+        Escribirle a RH Studio por WhatsApp
+      </a>
+    </div>
+    <div class="fw">
+      <div class="frow">
+        <div class="fg"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+        <div class="fg"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
+      </div>
+      <div class="fg"><label>Me contacto como</label><select><option>Persona — busco trabajo o asesoramiento</option><option>Empresa — consultoría de RRHH</option><option>Otro</option></select></div>
+      <div class="fg"><label>Servicio de interés</label><select><option>Armado de CV</option><option>Asesoramiento laboral</option><option>Atracción de talento</option><option>Onboarding</option><option>Formación</option></select></div>
+      <div class="fg"><label>Mensaje</label><textarea rows="3" placeholder="Contame brevemente qué necesitás..."></textarea></div>
+      <button class="fsub" onclick="handleSubmit(this)">Enviar consulta</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <div class="tsthead">
+    <span class="stag t-lila">Testimonios</span>
+    <h2 class="stitle" style="font-size:clamp(1.4rem,2.5vw,2rem)">La experiencia de quienes trabajaron junto a RH Studio</h2>
+  </div>
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="tcard tlila">
+        <div class="tstars">★★★★★</div>
+        <blockquote>"Me ayudó a rediseñar mi CV y en tres semanas conseguí entrevistas en empresas que antes no me respondían. Un cambio total."</blockquote>
+        <div class="tmeta"><div class="tav avl">MG</div><div><div class="tname">Martina G.</div><div class="trole">Marketing · Búsqueda activa</div></div></div>
+      </div>
+      <div class="tcard trose">
+        <div class="tstars">★★★★★</div>
+        <blockquote>"Tuve asesoría para prepararme en entrevistas y armar mi perfil de LinkedIn. Me sentí muy cómoda y las guías que tienen son muy útiles."</blockquote>
+        <div class="tmeta"><div class="tav avr">FC</div><div><div class="tname">Florencia C.</div><div class="trole">Estudiante de Administración · Búsqueda activa</div></div></div>
+      </div>
+      <div class="tcard tlila">
+        <div class="tstars">★★★★★</div>
+        <blockquote>"¡Super recomendable! Me ayudaron a armar mi CV y pude conseguir mi primera pasantía."</blockquote>
+        <div class="tmeta"><div class="tav avl">MT</div><div><div class="tname">Martín T.</div><div class="trole">Estudiante de Marketing · Búsqueda cerrada</div></div></div>
+      </div>
+      <div class="tcard tlila2">
+        <div class="tstars">★★★★★</div>
+        <blockquote>"Implementamos el programa de onboarding desde cero. El tiempo de adaptación de los nuevos empleados bajó notablemente."</blockquote>
+        <div class="tmeta"><div class="tav avl2">JP</div><div><div class="tname">Jorge P.</div><div class="trole">CEO · Empresa de tecnología</div></div></div>
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <button class="cnav-btn" id="prevBtn" onclick="moveCarousel(-1)">&#8592;</button>
+      <div class="cdots" id="cdots">
+        <div class="cdot active" onclick="goToSlide(0)"></div>
+        <div class="cdot" onclick="goToSlide(1)"></div>
+        <div class="cdot" onclick="goToSlide(2)"></div>
+        <div class="cdot" onclick="goToSlide(3)"></div>
+      </div>
+      <button class="cnav-btn" id="nextBtn" onclick="moveCarousel(1)">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="flogo"><span style="width:7px;height:7px;border-radius:50%;background:var(--lila-mid);display:inline-block;flex-shrink:0"></span>RH Studio · Paula Dayraut</div>
+    <div class="flinks"><a href="#sobre">Sobre RH Studio</a><a href="#servicios">Servicios</a><a href="#para-quien">Para quién</a><a href="#proceso">Proceso</a><a href="#contacto">Contacto</a></div>
+    <div style="font-size:0.78rem">© 2025 · Todos los derechos reservados</div>
+  </div>
+</footer>
+
+<script>
+var _slide=0,_total=3;
+function goToSlide(n){_slide=n;document.getElementById("carouselTrack").style.transform="translateX(-"+(_slide*100)+"%)";document.querySelectorAll(".cdot").forEach(function(d,i){d.classList.toggle("active",i===_slide)})}
+function moveCarousel(dir){goToSlide((_slide+dir+_total)%_total)}
+setInterval(function(){moveCarousel(1)},4500);
+function toggleMenu(){var m=document.getElementById("mobileMenu");m.style.display=m.style.display==="flex"?"none":"flex"}
+function handleSubmit(b){var o=b.textContent;b.textContent="¡Enviado! ✓";b.style.background="linear-gradient(90deg,#6B4CC4,#B84B70)";setTimeout(function(){b.textContent=o;b.style.background=""},3000)}
+document.querySelectorAll("a[href^='#']").forEach(function(a){a.addEventListener("click",function(e){var t=document.querySelector(this.getAttribute("href"));if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"})}})});
+window.addEventListener("scroll",function(){document.querySelector("nav").style.boxShadow=window.scrollY>30?"0 2px 20px rgba(0,0,0,0.06)":"none"});
+</script>
+</body>
+</html>
